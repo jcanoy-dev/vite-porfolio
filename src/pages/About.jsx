@@ -69,7 +69,7 @@ const AboutPage = () => {
           {/* Minimal Contact/Call to Action */}
           <footer className="pt-12 border-t border-slate-100 flex flex-col sm:flex-row gap-6 items-center">
             <p className="text-sm font-medium text-slate-500">
-              Want to discuss a project or technical architecture?
+                I will code anything for cat food :D
             </p>
             <a 
               href="mailto:jeffrey.canoy92@gmail.com" 
