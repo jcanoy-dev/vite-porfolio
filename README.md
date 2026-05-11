@@ -3,7 +3,7 @@
 This project is a React application built with Vite, featuring Tailwind CSS for styling and React Router for navigation.
 
 Checkout my Portfolio hosted in Cloudflare Workers :D 
-- https://jcanoy-porfolio.jeffrey-canoy92.workers.dev/
+- https://portfolio.jcanoy.workers.dev/
   
 ## Features
 
