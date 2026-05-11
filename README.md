@@ -2,6 +2,9 @@
 
 This project is a React application built with Vite, featuring Tailwind CSS for styling and React Router for navigation.
 
+Checkout my Portfolio hosted in Cloudflare Workers :D 
+- https://portfolio.jcanoy.workers.dev/
+  
 ## Features
 
 - **Vite**: Fast build tool with HMR (Hot Module Replacement)
