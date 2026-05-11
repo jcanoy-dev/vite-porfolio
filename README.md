@@ -1,7 +1,8 @@
 # React + Vite + Tailwind CSS
 
 This project is a React application built with Vite, featuring Tailwind CSS for styling and React Router for navigation.
-
+Checkout my Portfolio :D 
+https://jcanoy-porfolio.jeffrey-canoy92.workers.dev/
 ## Features
 
 - **Vite**: Fast build tool with HMR (Hot Module Replacement)
