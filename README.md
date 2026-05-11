@@ -1,6 +1,51 @@
-# React + Vite
+# React + Vite + Tailwind CSS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a React application built with Vite, featuring Tailwind CSS for styling and React Router for navigation.
+
+## Features
+
+- **Vite**: Fast build tool with HMR (Hot Module Replacement)
+- **React**: Component-based UI library
+- **Tailwind CSS**: Utility-first CSS framework with custom theme colors
+- **React Router**: Client-side routing for single-page application
+- **ESLint**: Code linting for better code quality
+
+## Custom Tailwind Theme
+
+The project includes custom color variables defined in `src/index.css`:
+
+- `--color-gray-teal-pale`: #f0f4f4
+- `--color-gray-teal-light`: #f4fafa
+- `--color-gray-teal-soft`: #ccdada
+- `--color-gray-teal-muted`: #9fb8b8
+- `--color-gray-teal`: #5f7d7e
+
+## Getting Started
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+3. Build for production:
+   ```bash
+   npm run build
+   ```
+
+## Project Structure
+
+- `src/App.jsx`: Main app component with routing
+- `src/main.jsx`: Entry point
+- `src/index.css`: Global styles and Tailwind imports
+- `src/layout/`: Layout components (AppLayout, AppHeader)
+- `src/pages/`: Page components (Home, About, Contact)
+
+## Plugins
 
 Currently, two official plugins are available:
 
