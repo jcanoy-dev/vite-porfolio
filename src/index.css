@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gray-teal-pale: #f0f4f4;    /* Pale */
+  --color-gray-teal-light: #f4fafa;   /* Lighter shade */
+  --color-gray-teal-soft: #ccdada;    /* Darker than pale */
+  --color-gray-teal-muted: #9fb8b8;   /* True mid-tone */
+  --color-gray-teal: #5f7d7e;
+  --font-serif: "Merriweather", serif;
+}
