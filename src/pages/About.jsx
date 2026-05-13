@@ -15,7 +15,7 @@ const AboutPage = () => {
         <div className="mb-12 flex flex-col md:flex-row gap-8">
           <div className="flex-1">
             <img 
-              src="src/assets/profile-pic.jpg" 
+              src="/profile-pic.jpg" 
               alt="Jeffrey Canoy" 
               className=" w-50 h-80 md:w-80 md:h-100 rounded-2xl object-cover shadow-lg border-2 border-slate-100"
             />
