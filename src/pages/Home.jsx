@@ -40,10 +40,10 @@ const Home = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
-                { title: "Frontend", skills: "React.js, Next.js, JavaScript (ES6+), HTML5, CSS3" },
-                { title: "Backend", skills: "Node.js, TypeScript, NestJS, API Integration, MSSQL, GraphQL" },
-                { title: "E-commerce", skills: "Shopify Development" },
-                { title: "Tools", skills: "Agile, Software Architecture, Full Stack Dev" }
+                { title: "Frontend", skills: "React.js, Next.js, JavaScript (ES6+), HTML5, CSS3, Tailwind" },
+                { title: "Backend", skills: "Node.js, TypeScript, Redux, NestJS, API Integration, MSSQL, GraphQL" },
+                { title: "E-commerce Platform", skills: "Shopify Development" },
+                { title: "Tools", skills: "Agile, Software Architecture, Full Stack Dev, CI/CD, TDD" }
               ].map((item) => (
                 <div key={item.title} className="p-3 rounded-lg bg-teal-50 border border-teal-100">
                   <span className="block font-bold text-teal-900 text-xs uppercase mb-1">{item.title}</span>
@@ -69,7 +69,7 @@ const Home = () => {
                 </div>
                 <p className="text-slate-500 text-sm italic mb-3">Full Stack Software Engineer</p>
                 <ul className="list-disc list-outside ml-4 text-sm text-slate-600 space-y-2">
-                  <li>Developed and optimized high-performance web applications using React.js, Next.js and Shopify.</li>
+                  <li>Developed and optimized high-performance web applications using React.js, Next.js, GraphQL and Shopify.</li>
                   <li>Collaborated with cross-functional teams to design scalable features for business expansion.</li>
                 </ul>
               </div>
@@ -84,16 +84,19 @@ const Home = () => {
                 
                 <div className="mb-4">
                   <p className="text-teal-700 text-sm font-semibold">Techstyle Fashion Group (Feb 2018 – Oct 2022)</p>
+                  <p className="text-slate-500 text-sm italic mb-3">Full Stack Software Engineer</p>
                   <ul className="list-disc list-outside ml-4 text-sm text-slate-600 mt-2 space-y-1">
                     <li>Developed sophisticated software solutions for global fashion retail group.</li>
+                    <li>Contributed to the JustFab Foundation Team, ensuring core system stability and performance. Implementing caching strategies and code optimizations that enhance overall system stability.</li>
                     <li>Implemented caching strategies and code optimizations for JustFab Foundation Team.</li>
                   </ul>
                 </div>
                 
                 <div>
                   <p className="text-teal-700 text-sm font-semibold">OSnet (May 2014 – Feb 2018)</p>
+                  <p className="text-slate-500 text-sm italic mb-3">Full Stack Developer</p>
                   <ul className="list-disc list-outside ml-4 text-sm text-slate-600 mt-2 space-y-1">
-                    <li>Engineered internal HR web application, streamlining administrative workflows.</li>
+                    <li>Engineered a comprehensive internal web application for the HR department, streamlining administrative workflows and data management.</li>
                   </ul>
                 </div>
               </div>

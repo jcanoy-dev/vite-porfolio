@@ -11,26 +11,35 @@ const AboutPage = () => {
           <div className="h-1 w-12 bg-teal-600 rounded-full"></div>
         </header>
 
-        {/* Text Content Area */}
-        <div className="space-y-8 text-lg leading-relaxed text-slate-600">
-          
-          <section>
+        {/* Profile Picture Section */}
+        <div className="mb-12 flex flex-col md:flex-row gap-8">
+          <div className="flex-1">
+            <img 
+              src="src/assets/profile-pic.jpg" 
+              alt="Jeffrey Canoy" 
+              className=" w-50 h-80 md:w-80 md:h-100 rounded-2xl object-cover shadow-lg border-2 border-slate-100"
+            />
+          </div>
+          <section className="flex-1">
             <p>
               I am a <span className="text-teal-800 font-medium">Full Stack Software Engineer</span> with over 
               a decade of experience specializing in the architecture and development of scalable web 
               applications. My career has been defined by a deep curiosity for how technology can 
               bridge the gap between complex business logic and intuitive user experiences.
             </p>
-          </section>
-
-          <section className="space-y-4">
-            <p>
+            <p className="my-10">
               Over the last 12 years, I have navigated the end-to-end development lifecycle for a 
               diverse range of projects—from building streamlined internal HR tools that power 
               organizational workflows to engineering high-performance features for 
               <span className="text-slate-900 font-medium"> large-scale global fashion e-commerce 
               platforms</span> like JustFab.
             </p>
+          </section>
+        </div>
+
+        {/* Text Content Area */}
+        <div className="space-y-8 text-lg leading-relaxed text-slate-600">
+          <section className="space-y-4">
             <p>
               My technical philosophy centers on stability and performance. During my tenure at 
               Awesome OS and Gray Lemon Technologies, I focused on implementing robust caching 
@@ -47,6 +56,9 @@ const AboutPage = () => {
               "I am currently passionate about leveraging the modern JavaScript ecosystem—specifically 
               React.js and Next.js—alongside robust backend architectures like NestJS and GraphQL 
               to drive business growth and digital innovation."
+            </p>
+            <p className="text-base italic mt-10">
+              "Additionally, I am deeply interested in learning new technologies and frameworks that can further enhance my ability to deliver scalable, high-quality software solutions."
             </p>
           </section>
 
