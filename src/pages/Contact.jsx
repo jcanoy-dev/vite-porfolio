@@ -1,8 +1,37 @@
-import { Mail, Globe, Phone, MapPin, ExternalLink } from "lucide-react";
+import { Mail, Globe, Phone, MapPin } from "lucide-react";
+import { ContactCard } from "../components/ui/ContactCard";
+
+// Clean static dataset decoupled from presentation markup
+const CONTACT_METHODS = [
+  {
+    id: "phone",
+    href: "tel:+639184365242",
+    icon: Phone,
+    label: "Phone",
+    value: "+63 918 436 5242",
+    isExternal: false
+  },
+  {
+    id: "email",
+    href: "mailto:jeffrey.canoy92@gmail.com",
+    icon: Mail,
+    label: "Email",
+    value: "jeffrey.canoy92@gmail.com",
+    isExternal: false
+  },
+  {
+    id: "linkedin",
+    href: "https://www.linkedin.com/in/jeffrey-canoy-641987208",
+    icon: Globe,
+    label: "LinkedIn",
+    value: "jeffrey-canoy",
+    isExternal: true
+  }
+];
 
 const ContactPage = () => {
   return (
-    <div className=" bg-white text-slate-800 font-sans">
+    <div className="bg-white text-slate-800 font-sans">
       <main className="max-w-2xl mx-auto px-6 py-20 md:py-32">
         
         {/* Simple Header */}
@@ -12,70 +41,28 @@ const ContactPage = () => {
           </h1>
           <div className="h-1 w-12 bg-teal-600 mx-auto rounded-full"></div>
           <p className="mt-6 text-slate-600 leading-relaxed">
-            I’m currently open to new opportunities, technical consultations, 
-            or just connecting with fellow engineers.
+            I'm currently open to new opportunities, technical consultations, or just connecting with fellow engineers.
           </p>
         </header>
 
         {/* Contact List */}
         <div className="space-y-4">
           
-          {/* Phone */}
-          <a 
-            href="tel:+639184365242" 
-            className="group flex items-center justify-between p-5 rounded-2xl border border-slate-100 hover:border-teal-200 hover:bg-teal-50/30 transition-all"
-          >
-            <div className="flex items-center gap-4">
-              <div className="text-teal-600">
-                <Phone size={20} />
-              </div>
-              <div>
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Phone</p>
-                <p className="text-lg font-medium text-slate-700">+63 918 436 5242</p>
-              </div>
-            </div>
-            <ExternalLink size={16} className="text-slate-300 group-hover:text-teal-500 transition-colors" />
-          </a>
+          {/* Dynamic Link Elements */}
+          {CONTACT_METHODS.map((method) => (
+            <ContactCard
+              key={method.id}
+              href={method.href}
+              icon={method.icon}
+              label={method.label}
+              value={method.value}
+              isExternal={method.isExternal}
+            />
+          ))}
 
-          {/* Email */}
-          <a 
-            href="mailto:jeffrey.canoy92@gmail.com" 
-            className="group flex items-center justify-between p-5 rounded-2xl border border-slate-100 hover:border-teal-200 hover:bg-teal-50/30 transition-all"
-          >
-            <div className="flex items-center gap-4">
-              <div className="text-teal-600">
-                <Mail size={20} />
-              </div>
-              <div>
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Email</p>
-                <p className="text-lg font-medium text-slate-700">jeffrey.canoy92@gmail.com</p>
-              </div>
-            </div>
-            <ExternalLink size={16} className="text-slate-300 group-hover:text-teal-500 transition-colors" />
-          </a>
-
-          {/* LinkedIn */}
-          <a 
-            href="https://www.linkedin.com/in/jeffrey-canoy-641987208" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="group flex items-center justify-between p-5 rounded-2xl border border-slate-100 hover:border-teal-200 hover:bg-teal-50/30 transition-all"
-          >
-            <div className="flex items-center gap-4">
-              <div className="text-teal-600">
-                <Globe size={20} />
-              </div>
-              <div>
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">LinkedIn</p>
-                <p className="text-lg font-medium text-slate-700">jeffrey-canoy</p>
-              </div>
-            </div>
-            <ExternalLink size={16} className="text-slate-300 group-hover:text-teal-500 transition-colors" />
-          </a>
-
-          {/* Location (Non-clickable) */}
+          {/* Location (Non-clickable fallback layout component) */}
           <div className="flex items-center gap-4 p-5 rounded-2xl border border-transparent">
-            <div className="text-slate-400">
+            <div className="text-slate-400 shrink-0">
               <MapPin size={20} />
             </div>
             <div>
@@ -85,7 +72,6 @@ const ContactPage = () => {
           </div>
 
         </div>
-
       </main>
     </div>
   );

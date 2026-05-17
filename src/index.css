@@ -8,3 +8,96 @@
   --color-gray-teal: #5f7d7e;
   --font-serif: "Merriweather", serif;
 }
+
+@layer base {
+  /* Targets all resume section headers across the application */
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* FIXED: Equivalent to gap-2 (8px) */
+    color: var(--color-teal-800);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-widest);
+    font-size: var(--text-sm);
+
+    /* Automatically inserts the teal lines before every H2 */
+    &::before {
+      content: "";
+      width: 2rem; /* FIXED: Equivalent to w-8 (32px) */
+      height: 1px;
+      background-color: var(--color-teal-200);
+    }
+  }
+}
+
+/* Reusable timeline node container */
+@utility timeline-item {
+  position: relative;
+  padding-left: 1.5rem; /* FIXED: Equivalent to pl-6 (24px) */
+  border-left-width: 2px;
+  border-left-color: var(--color-teal-100);
+
+  /* Shared pseudo-element timeline dots */
+  &::before {
+    content: "";
+    position: absolute;
+    left: -9px; /* Absolute pixel configuration alignment */
+    top: 0px;
+    width: 1rem;  /* FIXED: Equivalent to w-4 (16px) */
+    height: 1rem; /* FIXED: Equivalent to h-4 (16px) */
+    border-radius: var(--radius-full);
+    border-width: 4px;
+    border-color: var(--color-white);
+  }
+}
+
+/* Modifiers to handle dot colors dynamically */
+@utility timeline-active {
+  &::before { background-color: var(--color-teal-500); }
+}
+
+@utility timeline-inactive {
+  &::before { background-color: var(--color-slate-300); }
+}
+
+/* Custom feature block for quotes or highlight content */
+@utility insight-callout {
+  background-color: rgb(240 253 250 / 0.5); /* Equivalent to bg-teal-50/50 */
+  border-left-width: 4px;
+  border-left-color: var(--color-teal-200);
+  padding: 1.5rem;       /* Converted p-6 (24px) */
+  margin-block: 2.5rem;  /* Converted my-10 (40px) */
+  
+  /* Automatically normalizes any paragraph text inside the highlight block */
+  & p {
+    font-size: 1rem;     /* Converted text-base (16px) */
+    font-style: italic;
+    
+    /* target subsequent sibling paragraphs to add internal gaps */
+    & + p { 
+      margin-top: 2.5rem; /* Converted mt-10 (40px) */
+    }
+  }
+}
+
+/* src/index.css */
+
+/* Reusable container for layout contacts, profiles, and phone nodes */
+@utility contact-card-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem; /* Equivalent to p-5 (20px) */
+  border-width: 1px;
+  border-color: var(--color-slate-100);
+  border-radius: var(--radius-2xl);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+
+  &:hover {
+    border-color: var(--color-teal-200);
+    background-color: rgb(240 253 250 / 0.3); /* Equivalent to bg-teal-50/30 */
+  }
+}
