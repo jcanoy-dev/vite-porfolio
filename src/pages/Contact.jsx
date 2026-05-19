@@ -31,8 +31,8 @@ const CONTACT_METHODS = [
 
 const ContactPage = () => {
   return (
-    <div className="bg-white text-slate-800 font-sans">
-      <main className="max-w-2xl mx-auto px-6 py-20 md:py-32">
+    <div className="bg-white text-slate-800 font-sans h-full ">
+      <main className="max-w-2xl mx-auto px-6 py-20 md:py-32 ">
         
         {/* Simple Header */}
         <header className="mb-16 text-center">

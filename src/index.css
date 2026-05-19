@@ -1,94 +1,87 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gray-teal-pale: #f0f4f4;    /* Pale */
-  --color-gray-teal-light: #f4fafa;   /* Lighter shade */
-  --color-gray-teal-soft: #ccdada;    /* Darker than pale */
-  --color-gray-teal-muted: #9fb8b8;   /* True mid-tone */
+  --color-gray-teal-pale: #f0f4f4;
+  --color-gray-teal-light: #f4fafa;
+  --color-gray-teal-soft: #ccdada;
+  --color-gray-teal-muted: #9fb8b8;
   --color-gray-teal: #5f7d7e;
   --font-serif: "Merriweather", serif;
 }
 
 @layer base {
-  /* Targets all resume section headers across the application */
   h2 {
     display: flex;
     align-items: center;
-    gap: 0.5rem; /* FIXED: Equivalent to gap-2 (8px) */
+    gap: 0.5rem;
     color: var(--color-teal-800);
     font-weight: var(--font-weight-bold);
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing-widest);
     font-size: var(--text-sm);
 
-    /* Automatically inserts the teal lines before every H2 */
     &::before {
       content: "";
-      width: 2rem; /* FIXED: Equivalent to w-8 (32px) */
+      width: 2rem;
       height: 1px;
       background-color: var(--color-teal-200);
     }
   }
 }
 
-/* Reusable timeline node container */
 @utility timeline-item {
   position: relative;
-  padding-left: 1.5rem; /* FIXED: Equivalent to pl-6 (24px) */
+  padding-left: 1.5rem;
   border-left-width: 2px;
   border-left-color: var(--color-teal-100);
 
-  /* Shared pseudo-element timeline dots */
   &::before {
     content: "";
     position: absolute;
-    left: -9px; /* Absolute pixel configuration alignment */
+    left: -9px;
     top: 0px;
-    width: 1rem;  /* FIXED: Equivalent to w-4 (16px) */
-    height: 1rem; /* FIXED: Equivalent to h-4 (16px) */
+    width: 1rem;
+    height: 1rem;
     border-radius: var(--radius-full);
     border-width: 4px;
     border-color: var(--color-white);
   }
 }
 
-/* Modifiers to handle dot colors dynamically */
 @utility timeline-active {
-  &::before { background-color: var(--color-teal-500); }
+  &::before {
+    background-color: var(--color-teal-500);
+  }
 }
 
 @utility timeline-inactive {
-  &::before { background-color: var(--color-slate-300); }
+  &::before {
+    background-color: var(--color-slate-300);
+  }
 }
 
-/* Custom feature block for quotes or highlight content */
 @utility insight-callout {
-  background-color: rgb(240 253 250 / 0.5); /* Equivalent to bg-teal-50/50 */
+  background-color: rgb(240 253 250 / 0.5);
   border-left-width: 4px;
   border-left-color: var(--color-teal-200);
-  padding: 1.5rem;       /* Converted p-6 (24px) */
-  margin-block: 2.5rem;  /* Converted my-10 (40px) */
-  
-  /* Automatically normalizes any paragraph text inside the highlight block */
+  padding: 1.5rem;
+  margin-block: 2.5rem;
+                     
   & p {
-    font-size: 1rem;     /* Converted text-base (16px) */
+    font-size: 1rem;
     font-style: italic;
-    
-    /* target subsequent sibling paragraphs to add internal gaps */
-    & + p { 
-      margin-top: 2.5rem; /* Converted mt-10 (40px) */
+
+    & + p {
+      margin-top: 2.5rem;
     }
   }
 }
 
-/* src/index.css */
-
-/* Reusable container for layout contacts, profiles, and phone nodes */
 @utility contact-card-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.25rem; /* Equivalent to p-5 (20px) */
+  padding: 1.25rem;
   border-width: 1px;
   border-color: var(--color-slate-100);
   border-radius: var(--radius-2xl);
@@ -98,6 +91,6 @@
 
   &:hover {
     border-color: var(--color-teal-200);
-    background-color: rgb(240 253 250 / 0.3); /* Equivalent to bg-teal-50/30 */
+    background-color: rgb(240 253 250 / 0.3);
   }
 }
