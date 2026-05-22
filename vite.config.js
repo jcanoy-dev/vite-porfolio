@@ -13,4 +13,12 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] }),
     cloudflare()
   ],
+  server: {
+    proxy: {
+      "/api/analytics": {
+        target: "https://python-6adtmb7uc-jcanoy-dev.vercel.app",
+        changeOrigin: true,
+      }
+    }
+  }
 })
