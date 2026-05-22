@@ -26,6 +26,7 @@
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.0.0",
     "eslint-config-next": "^15.3.0",
+    "typescript": "^6.0.3",
     "wrangler": "^4.94.0"
   }
 }
