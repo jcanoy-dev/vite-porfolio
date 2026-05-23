@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source "../src/layout";
 
 @theme {
   --color-gray-teal-pale: #f0f4f4;
