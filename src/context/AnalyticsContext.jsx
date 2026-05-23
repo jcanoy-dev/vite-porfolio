@@ -9,9 +9,9 @@ export const AnalyticsProvider = ({ children }) => {
     () =>
       new HttpClient({
         baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL ?? "/api",
-        headers: {
-          "x-vercel-protection-bypass": process.env.NEXT_PUBLIC_ANALYTICS_API_KEY,
-        },
+        // headers: {
+        //   "x-vercel-protection-bypass": process.env.NEXT_PUBLIC_ANALYTICS_API_KEY,
+        // },
       }),
     []
   )
