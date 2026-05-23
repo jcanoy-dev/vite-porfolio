@@ -16,7 +16,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api/analytics": {
-        target: "https://python-6adtmb7uc-jcanoy-dev.vercel.app",
+        target: "https://python-pg.vercel.app",
         changeOrigin: true,
       }
     }

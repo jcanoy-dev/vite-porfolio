@@ -17,7 +17,7 @@ const nextConfig = {
       return [
         {
           source: '/api/:path*',
-          destination: 'https://python-6adtmb7uc-jcanoy-dev.vercel.app/api/:path*',
+          destination: 'https://python-pg.vercel.app/api/:path*',
         },
       ]
     },
