@@ -1,8 +1,32 @@
 const DEFAULT_TIMEOUT_MS = 10_000
 const DEFAULT_MAX_RETRIES = 3
 
+interface ApiErrorInit {
+  status?: number
+  statusText?: string
+  body?: unknown
+}
+
+interface HttpClientOptions {
+  baseUrl?: string
+  headers?: Record<string, string>
+  timeout?: number
+  maxRetries?: number
+}
+
+interface RequestOptions {
+  method?: string
+  body?: unknown
+  headers?: Record<string, string>
+  retries?: number
+}
+
 export class ApiError extends Error {
-  constructor(message, { status, statusText, body } = {}) {
+  status?: number
+  statusText?: string
+  body?: unknown
+
+  constructor(message: string, { status, statusText, body }: ApiErrorInit = {}) {
     super(message)
     this.name = "ApiError"
     this.status = status
@@ -10,22 +34,27 @@ export class ApiError extends Error {
     this.body = body
   }
 
-  get isClientError() { return this.status >= 400 && this.status < 500 }
-  get isServerError() { return this.status >= 500 }
+  get isClientError() { return (this.status ?? 0) >= 400 && (this.status ?? 0) < 500 }
+  get isServerError() { return (this.status ?? 0) >= 500 }
   get isTimeout() { return this.status === 408 }
 }
 
 export class HttpClient {
-  constructor({ baseUrl = "", headers = {}, timeout = DEFAULT_TIMEOUT_MS, maxRetries = DEFAULT_MAX_RETRIES } = {}) {
+  baseUrl: string
+  defaultHeaders: Record<string, string>
+  timeout: number
+  maxRetries: number
+
+  constructor({ baseUrl = "", headers = {}, timeout = DEFAULT_TIMEOUT_MS, maxRetries = DEFAULT_MAX_RETRIES }: HttpClientOptions = {}) {
     this.baseUrl = baseUrl
     this.defaultHeaders = headers
     this.timeout = timeout
     this.maxRetries = maxRetries
   }
 
-  async request(endpoint, { method = "GET", body, headers = {}, retries = this.maxRetries } = {}) {
+  async request(endpoint: string, { method = "GET", body, headers = {}, retries = this.maxRetries }: RequestOptions = {}): Promise<unknown> {
     const url = `${this.baseUrl}${endpoint}`
-    const init = {
+    const init: RequestInit = {
       method,
       headers: { "Content-Type": "application/json", ...this.defaultHeaders, ...headers },
       ...(body !== undefined ? { body: JSON.stringify(body) } : {}),
@@ -50,7 +79,7 @@ export class HttpClient {
         const contentType = res.headers.get("content-type")
         return contentType?.includes("application/json") ? res.json() : res.text()
       } catch (err) {
-        if (err.name === "AbortError") {
+        if ((err as Error).name === "AbortError") {
           throw new ApiError(`${method} ${endpoint} timed out`, { status: 408 })
         }
 
@@ -65,23 +94,23 @@ export class HttpClient {
     }
   }
 
-  get(endpoint, options = {}) {
+  get(endpoint: string, options: Omit<RequestOptions, "method" | "body"> = {}) {
     return this.request(endpoint, { ...options, method: "GET" })
   }
 
-  post(endpoint, body, options = {}) {
+  post(endpoint: string, body: unknown, options: Omit<RequestOptions, "method" | "body"> = {}) {
     return this.request(endpoint, { ...options, method: "POST", body })
   }
 
-  put(endpoint, body, options = {}) {
+  put(endpoint: string, body: unknown, options: Omit<RequestOptions, "method" | "body"> = {}) {
     return this.request(endpoint, { ...options, method: "PUT", body })
   }
 
-  patch(endpoint, body, options = {}) {
+  patch(endpoint: string, body: unknown, options: Omit<RequestOptions, "method" | "body"> = {}) {
     return this.request(endpoint, { ...options, method: "PATCH", body })
   }
 
-  delete(endpoint, options = {}) {
+  delete(endpoint: string, options: Omit<RequestOptions, "method" | "body"> = {}) {
     return this.request(endpoint, { ...options, method: "DELETE" })
   }
 }

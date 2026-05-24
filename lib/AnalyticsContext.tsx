@@ -1,10 +1,14 @@
 'use client'
-import { createContext, useContext, useMemo } from "react"
-import { HttpClient } from "../lib/httpClient"
+import { createContext, useContext, useMemo, type ReactNode } from "react"
+import { HttpClient } from "./httpClient"
 
-const AnalyticsContext = createContext(null)
+interface AnalyticsContextValue {
+  client: HttpClient
+}
 
-export const AnalyticsProvider = ({ children }) => {
+const AnalyticsContext = createContext<AnalyticsContextValue | null>(null)
+
+export const AnalyticsProvider = ({ children }: { children: ReactNode }) => {
   const client = useMemo(
     () =>
       new HttpClient({
@@ -23,7 +27,7 @@ export const AnalyticsProvider = ({ children }) => {
   )
 }
 
-export const useAnalytics = () => {
+export const useAnalytics = (): AnalyticsContextValue => {
   const ctx = useContext(AnalyticsContext)
   if (!ctx) throw new Error("useAnalytics must be used within AnalyticsProvider")
   return ctx

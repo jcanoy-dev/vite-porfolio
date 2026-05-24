@@ -1,5 +1,9 @@
 @import "tailwindcss";
-@source "../src/layout";
+
+@source "./*.{js,ts,jsx,tsx}";
+@source "./{_layout,about,contact}/*.{js,ts,jsx,tsx}";
+@source "../components/ui/*.{js,ts,jsx,tsx}";
+@source "../lib/*.{js,ts,jsx,tsx}";
 
 @theme {
   --color-gray-teal-pale: #f0f4f4;
@@ -7,10 +11,13 @@
   --color-gray-teal-soft: #ccdada;
   --color-gray-teal-muted: #9fb8b8;
   --color-gray-teal: #5f7d7e;
-  --font-serif: "Merriweather", serif;
+  --font-serif: serif;
 }
 
 @layer base {
+  body, h1, h2, h3, h4, h5, h6, header {
+    font-family: var(--font-serif);
+  }
   h2 {
     display: flex;
     align-items: center;
