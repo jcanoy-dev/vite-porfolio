@@ -1,10 +1,5 @@
 @import "tailwindcss";
 
-@source "./*.{js,ts,jsx,tsx}";
-@source "./{_layout,about,contact}/*.{js,ts,jsx,tsx}";
-@source "../components/ui/*.{js,ts,jsx,tsx}";
-@source "../lib/*.{js,ts,jsx,tsx}";
-
 @theme {
   --color-gray-teal-pale: #f0f4f4;
   --color-gray-teal-light: #f4fafa;

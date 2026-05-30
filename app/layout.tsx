@@ -1,10 +1,10 @@
 // app/layout.tsx
 import type { ReactNode } from "react";
 import { DM_Sans } from "next/font/google";
-import { AnalyticsProvider } from "../lib/AnalyticsContext";
-import StoreProvider from "../lib/StoreProvider";
+import { AnalyticsProvider } from "@/lib/AnalyticsContext";
+import StoreProvider from "@/lib/StoreProvider";
 import "./globals.css";
-import AppLayout from "./_layout/AppLayout";
+import AppLayout from "@/components/layout/AppLayout";
 
 
 const dmSans = DM_Sans({
