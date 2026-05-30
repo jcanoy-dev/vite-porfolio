@@ -1,6 +1,10 @@
 'use client'
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useDispatch, useSelector } from "react-redux"
+import { Moon, Sun } from "lucide-react"
+import { toggleTheme } from "@/store/themeSlice"
+import type { RootState } from "@/store"
 
 const NAV_LINKS = [
   { href: "/", label: "Portfolio" },
@@ -10,12 +14,13 @@ const NAV_LINKS = [
 
 const AppHeader = () => {
   const pathname = usePathname()
+  const dispatch = useDispatch()
+  const theme = useSelector((state: RootState) => state.theme.mode)
 
   return (
     <header className="sticky top-0 z-20 w-full">
-      <div className="mx-auto flex max-w-7xl items-center justify-center px-6 py-4 lg:px-10">
-
-        <nav className="flex items-center gap-8">
+      <div className="relative mx-auto flex max-w-7xl items-center justify-end px-6 py-4 lg:px-10">
+        <nav className="absolute left-1/2 -translate-x-1/2 flex items-center gap-8">
           {NAV_LINKS.map(({ href, label }) => {
             const isActive = pathname === href
             return (
@@ -36,6 +41,14 @@ const AppHeader = () => {
             )
           })}
         </nav>
+
+        <button
+          onClick={() => dispatch(toggleTheme())}
+          aria-label="Toggle theme"
+          className="p-2 rounded-full text-gray-teal hover:bg-gray-teal-soft transition-colors duration-200"
+        >
+          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
       </div>
     </header>
   )

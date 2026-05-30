@@ -14,6 +14,14 @@
   --font-serif: serif;
 }
 
+.dark {
+  --color-gray-teal-pale: #1a2424;
+  --color-gray-teal-light: #1e2b2b;
+  --color-gray-teal-soft: #243535;
+  --color-gray-teal-muted: #2e4545;
+  --color-gray-teal: #8ab4b5;
+}
+
 @layer base {
   body, h1, h2, h3, h4, h5, h6, header {
     font-family: var(--font-serif);

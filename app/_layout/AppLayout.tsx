@@ -1,14 +1,17 @@
 'use client'
 import { type ReactNode, useEffect } from "react"
 import { usePathname } from "next/navigation"
+import { useSelector } from "react-redux"
 import AppHeader from "./AppHeader"
 import { useAnalytics } from "@/lib/AnalyticsContext"
+import type { RootState } from "@/store"
 
 const env = process.env.NODE_ENV || "development";
 
 const AppLayout = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname()
   const { client } = useAnalytics()
+  const theme = useSelector((state: RootState) => state.theme.mode)
 
   useEffect(() => {
     if (env === "development") return;
@@ -22,7 +25,7 @@ const AppLayout = ({ children }: { children: ReactNode }) => {
   }, [pathname, client])
 
   return (
-    <div className="h-screen xl:flex bg-gray-teal-muted overflow-hidden pb-10">
+    <div className={`h-screen xl:flex bg-gray-teal-muted overflow-hidden pb-10 ${theme === 'dark' ? ' dark' : ''}`}>
       <div className="relative w-full max-w-8xl h-full">
         <AppHeader />
 
