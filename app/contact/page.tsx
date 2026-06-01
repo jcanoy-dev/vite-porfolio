@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { Mail, Globe, Phone, MapPin } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Get in touch with Jeffrey Canoy. Available for new opportunities in full stack web development.",
+};
 import { ContactCard } from "@/components/ui/ContactCard";
 
 // Clean static dataset decoupled from presentation markup

@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { InsightCallout } from "@/components/ui/InsightCallout";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "Learn more about Jeffrey Canoy — Full Stack Software Engineer with over a decade of experience building scalable web applications.",
+};
 
 const AboutPage = () => {
   return (
