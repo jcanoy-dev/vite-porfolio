@@ -1,66 +1,83 @@
-# React + Vite + Tailwind CSS
+# Portfolio Website
 
-This project is a React application built with Vite, featuring Tailwind CSS for styling and React Router for navigation.
+This is a personal portfolio website built with Next.js 15, React, TypeScript, and Tailwind CSS.
 
-Checkout my Portfolio hosted in Cloudflare Workers :D 
-- https://portfolio.jcanoy.workers.dev/
-  
-## Features
+The app showcases a modern portfolio layout with animated UI, dark mode support, and a simple content-driven page structure for a portfolio, about, and contact page.
 
-- **Vite**: Fast build tool with HMR (Hot Module Replacement)
-- **React**: Component-based UI library
-- **Tailwind CSS**: Utility-first CSS framework with custom theme colors
-- **React Router**: Client-side routing for single-page application
-- **ESLint**: Code linting for better code quality
+## Key Features
 
-## Custom Tailwind Theme
-
-The project includes custom color variables defined in `src/index.css`:
-
-- `--color-gray-teal-pale`: #f0f4f4
-- `--color-gray-teal-light`: #f4fafa
-- `--color-gray-teal-soft`: #ccdada
-- `--color-gray-teal-muted`: #9fb8b8
-- `--color-gray-teal`: #5f7d7e
+- **Next.js 15**: App Router, metadata API, and optimized static/page rendering
+- **TypeScript**: Strong typing across components, page metadata, and store logic
+- **Tailwind CSS v4**: Utility-first styling with custom theme colors in `app/globals.css`
+- **Redux Toolkit**: Client-side theme state management
+- **Framer Motion**: Animated page visuals and floating icon effects on the homepage
+- **Lucide / React Icons**: Consistent iconography for navigation, contact links, and skills cards
+- **Cloudflare Workers / Wrangler**: Production deployment target via `wrangler deploy`
 
 ## Getting Started
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
+Install dependencies:
 
-2. Start the development server:
-   ```bash
-   npm run dev
-   ```
+```bash
+npm install
+```
 
-3. Build for production:
-   ```bash
-   npm run build
-   ```
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Deploy to Cloudflare Workers:
+
+```bash
+npm run deploy
+```
+
+Run linting:
+
+```bash
+npm run lint
+```
 
 ## Project Structure
 
-- `src/App.jsx`: Main app component with routing
-- `src/main.jsx`: Entry point
-- `src/index.css`: Global styles and Tailwind imports
-- `src/layout/`: Layout components (AppLayout, AppHeader)
-- `src/pages/`: Page components (Home, About, Contact)
+- `app/`
+  - `layout.tsx`: Root layout with global providers and theme support
+  - `page.tsx`: Homepage entry that renders the portfolio landing page
+  - `about/page.tsx`: About page content
+  - `contact/page.tsx`: Contact page content
+- `components/`
+  - `layout/`: Shared layout and header components
+  - `pages/`: Page-specific components such as `HomePage`
+  - `ui/`: Reusable UI elements like `ContactCard`, `InsightCallout`, `SkillsCard`, and `TimelineNode`
+- `lib/`
+  - `AnalyticsContext.tsx`: Analytics provider for page-view tracking
+  - `StoreProvider.tsx`: Redux store provider wrapper
+- `store/`
+  - `themeSlice.ts`: Dark/light theme state management
+  - `index.ts`: Redux store configuration
+- `public/`: Static assets and images
+- `next.config.ts`: Next.js configuration with export and environment rewrites for development
+- `wrangler.jsonc`: Cloudflare Workers deployment settings
 
-## Plugins
+## Environment
 
-Currently, two official plugins are available:
+This project uses configuration from `config/default.json` and `config/production.json` for API variables and analytics keys.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Development rewrites
 
-## React Compiler
+When running locally, API requests to `/api/:path*` are proxied to a remote development backend configured in `next.config.ts`.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Notes
 
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- The site uses a custom `AppLayout` and header with navigation links to the portfolio, about, and contact pages.
+- Theme toggling is implemented in the header via Redux state.
+- The homepage includes animated background particles and a summary of skills, experience, and education.
+- The app is built for both fast local development and static-friendly production deployment.
